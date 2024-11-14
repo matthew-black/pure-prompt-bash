@@ -32,7 +32,7 @@ pure_prompt_symbol="❯"
 pure_symbol_unpulled="⇣"
 pure_symbol_unpushed="⇡"
 pure_symbol_dirty="*"
-# pure_git_stash_symbol="≡"
+pure_git_stash_symbol="≡"
 
 # if this value is true, remote status update will be async
 pure_git_async_update=false
@@ -126,7 +126,7 @@ __pure_update_prompt_color() {
 # if user is root, prompt is BRIGHT_YELLOW
 case ${UID} in
 	0) pure_user_color=${BRIGHT_YELLOW} ;;
-	*) pure_user_color=${BRIGHT_MAGENTA} ;;
+	*) pure_user_color=${YELLOW} ;;
 esac
 
 # if git isn't installed when shell launches, git integration isn't activated
@@ -137,7 +137,7 @@ fi
 PROMPT_COMMAND="__pure_update_prompt_color; ${PROMPT_COMMAND}"
 
 
-readonly FIRST_LINE="${CYAN}\w \${pure_git_status}\n"
+readonly FIRST_LINE="${MAGENTA}\w \${pure_git_status}\n"
 # raw using of $ANY_COLOR (or $(tput setaf ***)) here causes a creepy bug when go back history with up arrow key
 # I couldn't find why it occurs
 readonly SECOND_LINE="\[\${pure_prompt_color}\]${pure_prompt_symbol}\[$RESET\] "
